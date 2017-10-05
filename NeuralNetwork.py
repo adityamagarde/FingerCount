@@ -13,6 +13,7 @@ datasetDimensions = dataset.shape
 
 #DATA PREPROCESSING
 X = dataset.iloc[:, 0:3].values
+X[:, 0:2] = X[:, 0:2]/100
 #rowsOnes = np.ones((datasetDimensions[0], 1), dtype='int64')
 #X = np.concatenate((rowsOnes, X), axis=1)
 
@@ -42,7 +43,9 @@ class NeuralNetwork(object):
 #CREATE AND INITIALISE THE WEIGHT MATRICES
     def __init__(self):
         self.W1 = np.random.randn(self.inputLayerSize, self.hiddenLayerSize)
-        self.W2 = np.random.randn(self.hiddenLayerSize, self.outputLayerSize)    
+        self.W2 = np.random.randn(self.hiddenLayerSize, self.outputLayerSize) 
+        print(self.W1)
+        print(self.W2)
 #INITIALISE THE VALUES OF Z2, A2, Z3, OUTPUT
     def initialiseAZ(self, X):
         self.Z2 = np.dot(X, self.W1)
@@ -80,3 +83,7 @@ for i in range(1,250):
     print('W1 = ', weight1, 'W2 = ', weight2, 'Cost = ', cost)
 
 print('initialDJDW1 = ', initialdJdW1, 'intialDJDW2 = ', initialdJdW2)
+
+#WE NOW TAKE THE INPUT AND PERFORM THE PREDICTIONS
+
+
